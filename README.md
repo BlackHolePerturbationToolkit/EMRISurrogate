@@ -24,8 +24,9 @@ Model details can be found in paper 1 (see citations below).
 The latest development version will always be available from the project git
 repository:
 
+```bash
 git clone https://github.com/BlackHolePerturbationToolkit/EMRISurrogate.git
-
+```
 
 # Requirements
 
@@ -76,6 +77,7 @@ be found in the LICENSE file.
 # Authors
 
 Tousif Islam
+
 Scott Field
 
 # Citation guideline
@@ -84,11 +86,13 @@ If you make use of any module from the Toolkit in your research please acknowled
 
 > This work makes use of the Black Hole Perturbation Toolkit.
 
-If you make use of the EMRI surrogate model, EMRISur1dq1e4, please cite 
+If you make use of the EMRI surrogate model, EMRISur1dq1e4, please cite Paper 1:
 
+```
 @article{rifat2019surrogate,
   title={A Surrogate Model for Gravitational Wave Signals from Comparable-to Large-Mass-Ratio Black Hole Binaries},
   author={Rifat, Nur EM and Field, Scott E and Khanna, Gaurav and Varma, Vijay},
   journal={arXiv preprint arXiv:1910.10473},
   year={2019}
 }
+```
