@@ -80,8 +80,11 @@ be found in the LICENSE file.
 
 # Authors
 
+Scott Field  
 Tousif Islam  
-Scott Field
+Gaurav Khanna  
+Nur Rifat  
+Vijay Varma
 
 # Citation guideline
 
