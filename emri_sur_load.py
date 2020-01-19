@@ -20,7 +20,19 @@ import scipy
 from scipy.interpolate import InterpolatedUnivariateSpline as Spline
 from scipy.interpolate import splrep, splev
 import h5py
+import hashlib
 #----------------------------------------------------------------------------------------------------
+
+
+def md5(fname):
+    """ Compute has from file. code taken from 
+    https://stackoverflow.com/questions/3431825/generating-an-md5-checksum-of-a-file"""
+    hash_md5 = hashlib.md5()
+    with open(fname, "rb") as f:
+        for chunk in iter(lambda: f.read(4096), b""):
+            hash_md5.update(chunk)
+    return hash_md5.hexdigest()
+
 
 def load_surrogate(EMRI):
     """ Loads all interpolation data for the following modes
@@ -31,6 +43,13 @@ def load_surrogate(EMRI):
     as this file."""
 
     if EMRI == True:
+
+        file_hash = md5('EMRISur1dq1e4.h5')
+        zenodo_current_hash = "d145958484738e0c7292e084a66a96fa"
+
+        if file_hash != zenodo_current_hash:
+            raise AttributeError("EMRISur1dq1e4.h5 out of date.\n Please download new version from https://zenodo.org/record/3592428")
+
 
         with h5py.File('EMRISur1dq1e4.h5', 'r') as f:
         
