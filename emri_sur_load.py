@@ -88,7 +88,7 @@ def alpha_scaling_h(q,h):
     """ Implements alpha-scaling to match NR """
 
     nu=q/(1.+q)**2
-    alpha=1.0-1.402671*nu-0.036154*nu*nu-0.2005567*nu*nu*nu-25.6461*nu*nu*nu*nu
+    alpha=1.0-1.352854*nu-1.223006*nu*nu+8.601968*nu*nu*nu-46.74562*nu*nu*nu*nu
     h_scaled=np.array(h)*alpha
     return h_scaled
 
@@ -96,7 +96,7 @@ def alpha_scaling_time(q):
     """ Implements alpha-scaling to match NR """
 
     nu=q/(1.+q)**2
-    alpha=1.0-1.402671*nu-0.036154*nu*nu-0.2005567*nu*nu*nu-25.6461*nu*nu*nu*nu
+    alpha=1.0-1.352854*nu-1.223006*nu*nu+8.601968*nu*nu*nu-46.74562*nu*nu*nu*nu
     t_scaled=np.array(time)*alpha
     return t_scaled
 
