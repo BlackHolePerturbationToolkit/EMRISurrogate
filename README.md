@@ -11,7 +11,7 @@ rescaling parameter tuned to NR simulations according to equation 4 of
 paper 1 (see citations below).
 
 This total mass rescaling is applied in the function slog_surrogate, and
-so to generate point-particle perturbation theory waveforms within any
+so to generate point-particle perturbation theory waveforms without any
 tuning to NR set alpha = 1 in the relevant function. Note that alpha
 approaches unity in the extreme mass ratio limit.
 
@@ -32,16 +32,19 @@ git clone https://github.com/BlackHolePerturbationToolkit/EMRISurrogate.git
 # Requirements
 
 This package requires Python 3 and the sklearn package. Parts of the accompanying
-Jupyter notebook require gwsurrogate, which can be installed with 
+Jupyter notebook will require gwsurrogate, which can be installed with 
 
 ```bash
 pip install gwsurrogate
 ```
 
+Note that you do not need gwsurrogate to evalulate the EMRI surrogate model or 
+run most parts of the notebook.
+
 # Installation
 
 1. Clone the repository
-2. Download the datafile (hosted on Zenodo)
+2. Download the datafile (hosted on [Zenodo](https://zenodo.org/record/3592428#.XgI_JllKg5m))
 
 ```bash
 wget https://zenodo.org/record/3592428/files/EMRISur1dq1e4.h5
@@ -77,8 +80,11 @@ be found in the LICENSE file.
 
 # Authors
 
+Scott Field  
 Tousif Islam  
-Scott Field
+Gaurav Khanna  
+Nur Rifat  
+Vijay Varma
 
 # Citation guideline
 
