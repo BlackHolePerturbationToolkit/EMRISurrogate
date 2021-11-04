@@ -44,10 +44,10 @@ run most parts of the notebook.
 # Installation
 
 1. Clone the repository
-2. Download the datafile (hosted on [Zenodo](https://zenodo.org/record/3592428#.XgI_JllKg5m))
+2. Download the datafile (hosted on [Zenodo](https://zenodo.org/record/3612600#.YYPdG3VKg5k))
 
 ```bash
-wget https://zenodo.org/record/3592428/files/EMRISur1dq1e4.h5
+wget https://zenodo.org/record/3612600/files/EMRISur1dq1e4.h5
 ```
 
 3. Create a static link from in the main directory to the EMRISur1dq1e4.h5 file.
