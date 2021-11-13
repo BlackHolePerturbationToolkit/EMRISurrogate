@@ -1,6 +1,6 @@
 # EMRISurrogate
 
-Copyright (c) 2020 Black Hole Perturbation Toolkit Team
+Copyright (c) 2020 Black Hole Perturbation Toolkit Team.
 
 The EMRISurrogate package provides access to a surrogate gravitational
 waveform model. Currently, this package supports one model, EMRISur1dq1e4,
