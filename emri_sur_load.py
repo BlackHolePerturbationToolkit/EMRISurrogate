@@ -21,6 +21,7 @@ from scipy.interpolate import InterpolatedUnivariateSpline as Spline
 from scipy.interpolate import splrep, splev
 import h5py
 import hashlib
+from gwtools import gwtools as _gwtools
 #----------------------------------------------------------------------------------------------------
 
 
@@ -127,8 +128,8 @@ def slog_surrogate(q, h_eim_amp_spline, h_eim_ph_spline, eim_indicies_amp, eim_i
     h_approx_ph = np.dot(B_ph.transpose(), h_eim_ph)
     h_approx = amp_ph_to_comp(h_approx_amp, h_approx_ph)
     if calibrated==True:
-        h_approx = alpha_scaling_h(q,h_approx) # because the training waveform follows definition q<1 and we follow q>1
-    return np.array(h_approx)*(1/q)
+        h_approx = alpha_scaling_h(q,h_approx) 
+    return np.array(h_approx)*(1/q) # because the training waveform follows definition q<1 and we follow q>1
 
 def surrogate(modes, q_input, h_eim_amp_spline, h_eim_ph_spline, eim_indicies_amp, eim_indicies_ph, B_amp, B_ph, calibrated):
     """ Takes the interpolation indices, spline nodes, matrix B and computes the interpolated waveform for all modes"""
@@ -140,7 +141,9 @@ def surrogate(modes, q_input, h_eim_amp_spline, h_eim_ph_spline, eim_indicies_am
     return h_approx
 
 def generate_surrogate(q_input,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(4,4),(5,3),(5,4),(5,5)], calibrated=True):
-    """ Top-level function to evaluate surrogate waveform"""
+    """ Top-level function to evaluate surrogate waveform.
+    When calibrated = True, a scaling parameter is used to calibrate the ppBHPT waveforms to NR in comparable mass ratio regime.
+    calibrated = False, the raw(uncalibrated)  ppBHPT waveforms are returned."""
     
     h_approx = surrogate(modes,q_input, h_eim_amp_spline, h_eim_ph_spline, eim_indicies_amp, eim_indicies_ph, B_amp, B_ph, calibrated)
     if calibrated==True:
@@ -149,16 +152,19 @@ def generate_surrogate(q_input,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),
     else:
         return np.array(time), h_approx
 
-def generate_surrogate_physical(q_input,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(4,4),(5,3),(5,4),(5,5)], M_total=80, dis=100):
-    """ Top-level function to evaluate surrogate waveform in physical units"""
+def generate_surrogate_physical(q_input,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(4,4),(5,3),(5,4),(5,5)], \
+                                calibrated=True, M_total=80, dis=100):
+    """ Top-level function to evaluate surrogate waveform in physical units for a source of total mass(in solar mass) M_total at a given
+    distance(parsec). When calibrated = True, returns a calibrated waveform to NR; calibrated = False, the raw ppBHPT waveforms are
+    returned"""
     
-    time_approx, h_approx = generate_surrogate(q_input, modes, calibrated=True)
+    time_approx, h_approx = generate_surrogate(q_input, modes, calibrated)
     
     # Physical units
-    G=6.674*1e-11
-    MSUN_SI = 1.9885469549614615e+30
-    PC_SI = 3.085677581491367e+16
-    C_SI = 299792458.0
+    G=_gwtools.G
+    MSUN_SI = _gwtools.MSUN_SI
+    PC_SI = _gwtools.PC_SI
+    C_SI = _gwtools.c
 
     M=M_total*MSUN_SI
     dL=dis* PC_SI
