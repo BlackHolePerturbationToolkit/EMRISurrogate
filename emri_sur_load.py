@@ -98,10 +98,11 @@ def load_surrogate(EMRI):
 def amp_ph_to_comp(a,ph):
     """ Takes the amplitude and phase of the waveform and
     computes the compose them together"""
-    import cmath as c
-    t =[]
-    for i in range(len(a)):
-        t.append(a[i]*c.exp(ph[i]*1j))
+#     import cmath as c
+#     t =[]
+#     for i in range(len(a)):
+#         t.append(a[i]*c.exp(ph[i]*1j))
+    t = a*np.exp(1j*ph)
     return t
 
 def alpha_scaling_h(q,h):
