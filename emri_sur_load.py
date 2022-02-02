@@ -153,10 +153,10 @@ def generate_surrogate(q_input,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),
     else:
         return np.array(time), h_approx
 
-def generate_surrogate_physical(q_input,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(4,4),(5,3),(5,4),(5,5)], \
-                                calibrated=True, M_total=80, dis=100):
-    """ Top-level function to evaluate surrogate waveform in physical units for a source of total mass(in solar mass) M_total at a given
-    distance(parsec). When calibrated = True, returns a calibrated waveform to NR; calibrated = False, the raw ppBHPT waveforms are
+def generate_surrogate_physical(q_input,M_total=80,dis=100,modes=[(2,1),(2,2),(3,1),(3,2),(3,3),(4,2),(4,3),(4,4),(5,3),(5,4),(5,5)], \
+                                calibrated=True):
+    """ Top-level function to evaluate surrogate waveform in physical units for a source of total mass (in solar masses) M_total at a given
+    distance (parsec). When calibrated = True, returns a calibrated waveform to NR; calibrated = False, the raw ppBHPT waveforms are
     returned"""
     
     time_approx, h_approx = generate_surrogate(q_input, modes, calibrated)
