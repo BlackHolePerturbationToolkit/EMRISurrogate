@@ -1,11 +1,12 @@
-# EMRISurrogate
-
-**Announcement** (9/21/2022): EMRISurrogate has moved to 
+**IMPORTANT ANNOUNCEMENT** (9/21/2022): EMRISurrogate has moved to 
 [BHPTNRSurrogate](https://github.com/BlackHolePerturbationToolkit/BHPTNRSurrogate). 
 We will continue to make bug fixes to the EMRISurrogate package. This package will 
 continue to host the EMRISur1dq1e4 model while future models can be found in the
 [BHPTNRSurrogate](https://github.com/BlackHolePerturbationToolkit/BHPTNRSurrogate)
 package.
+
+
+# EMRISurrogate
 
 Copyright (c) 2020 Black Hole Perturbation Toolkit Team
 
